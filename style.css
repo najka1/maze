@@ -1,0 +1,25 @@
+
+h1{
+    font-size: 50px;
+    color: #0000CB;
+}
+
+.prvi{
+    text-align: center;
+}
+.L{
+    color: 	#B22222;
+}
+
+.E{
+    color: #F0E68C;
+}
+
+.O{
+    color: #006400;
+}
+
+.tretji{
+    height: 250px;
+    background-image: url(ozadje.png);
+}
