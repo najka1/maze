@@ -5,6 +5,7 @@
         <meta charset="UTF-8" />
         <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
         <link rel="stylesheet" href="style.css" type="text/css" media="all" />
+        <script src="script.js"></script>
     </head>
     <body>
         
@@ -12,10 +13,17 @@
             <h1><span class="L">L</span><span class="E">E</span>G<span class="O">O</span></h1>
         </div>
         <div class="drugi">
-
+            <div class="holder">
+            <canvas id="canvas" width="726px" height="726px">
+                <script>
+                drawMaze();
+                drawPath();
+                </script>
+            </canvas>
+            </div>
         </div>
         <div class="tretji">
-
+           
         </div>
     </body>
 </html>

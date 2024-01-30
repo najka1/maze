@@ -1,25 +1,33 @@
+body{
+    background-image: url(b&w1.png);
+}
 
 h1{
-    font-size: 50px;
+    font-size: 70px;
     color: #0000CB;
+    font-family: monospace, "Monospace";
+    font-weight: bold;
 }
 
 .prvi{
     text-align: center;
 }
 .L{
-    color: 	#B22222;
+    color: 	#fc0303;
 }
 
 .E{
-    color: #F0E68C;
+    color: #fcdf03;
 }
 
 .O{
-    color: #006400;
+    color: #02a807;
 }
 
-.tretji{
-    height: 250px;
-    background-image: url(ozadje.png);
+.holder{
+    margin: auto;
+    width: 726px;
+    height: 726px;
+    background-color: rgba(255, 255, 255, 0.7);
 }
+
