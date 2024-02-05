@@ -1,5 +1,4 @@
-function drawMaze(){
-	var cord=[
+var cord=[
 	[2,2,226,2],
     [242,2,482,2],
     [34,18,50,18],
@@ -440,23 +439,8 @@ function drawMaze(){
     [466,450,466,466],
     [482,2,482,482],
 	];
-  const canvas = document.getElementById("canvas");
-   const ctx = canvas.getContext("2d");
-   console.log("maze "+cord.length);
-   ctx.beginPath();
-   ctx.scale(1.5,1.5);
-   for(i=0;i<cord.length;i++){
-     console.log("maze2");
-     ctx.moveTo(cord[i][0],cord[i][1]);
-     ctx.lineTo(cord[i][2],cord[i][3]);
-    }
-    ctx.lineWidth = 2;
-    ctx.stroke();
-    console.log("maze3 "+cord.length);
-}
 
-function drawPath(){
-  path = [
+var path = [
     [234,2],
     [234,10],
     [202,10],
@@ -550,7 +534,27 @@ function drawPath(){
     [250,474],
     [250,482]
 ];
-const canvas = document.getElementById("canvas");
+
+function drawMaze(){
+	
+  const canvas = document.getElementById("canvas");
+   const ctx = canvas.getContext("2d");
+   console.log("maze "+cord.length);
+   ctx.beginPath();
+   ctx.scale(1.5,1.5);
+   for(i=0;i<cord.length;i++){
+     console.log("maze2");
+     ctx.moveTo(cord[i][0],cord[i][1]);
+     ctx.lineTo(cord[i][2],cord[i][3]);
+    }
+    ctx.lineWidth = 2;
+    ctx.stroke();
+    console.log("maze3 "+cord.length);
+}
+
+function drawPath(){
+  
+  const canvas = document.getElementById("canvas");
   const ctx = canvas.getContext("2d");
   for(i=0;i<path.length-1;i++){
     ctx.beginPath();
@@ -560,4 +564,50 @@ const canvas = document.getElementById("canvas");
     ctx.strokeStyle ="red";
     ctx.stroke();
   }
+}
+
+//draw solution
+function drawSolution() {
+  const canvas = document.getElementById("canvas");
+  const ctx = canvas.getContext("2d");
+  document.getElementById("play").setAttribute("disabled",true);
+  
+  const drawLinesWithDelay = (ctx, path, delay, style) => {
+
+    ctx.beginPath();
+    ctx.strokeStyle = "red";
+    
+    ctx.lineWidth = 4;
+
+    const drawLineSegment = (i) => {
+      const point = path[i];
+      const x = point[0];
+      const y = point[1];
+
+      if (i === 0) {
+        ctx.moveTo(x, y);
+      } else {
+        ctx.lineTo(x, y);
+      }
+
+      ctx.stroke();
+      
+      if (i < path.length - 1) {
+        setTimeout(() => {
+          drawLineSegment(i + 1);
+        }, delay);
+      } else {
+        ctx.closePath();
+        document.getElementById("play").removeAttribute("disabled");
+
+      }
+    };
+
+    drawLineSegment(0);
+    
+  };
+  const delayBetweenLines = 1000;
+  
+  drawLinesWithDelay(ctx, path, delayBetweenLines);
+  
 }
