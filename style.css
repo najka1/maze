@@ -26,10 +26,20 @@ h1{
 
 .holder{
     margin: auto;
-    width: 726px;
-    height: 726px;
+    width: fit-content;
     background-color: rgba(255, 255, 255, 0.7);
+    position: relative;
 }
+
+#canvas{
+    position: relative;
+}
+
+#canvas2{
+    position: absolute;
+    left: 0;
+    top: 0;
+} 
 
 .tretji{
     height: 100px;
