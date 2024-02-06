@@ -535,11 +535,23 @@ var path = [
   [250, 482]
 ];
 
+const brick1 = new Image();
+brick1.src = "slike/brick1.png";
+const brick2 = new Image();
+brick2.src = "slike/brick2.png";
+const brick3 = new Image();
+brick3.src = "slike/brick3.png";
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 const ch = document.getElementById("canvas2");
 const ctx2 = ch.getContext("2d");
 
+const brickWidth1 = 45;
+const brickHeight1 = 35;
+const brickWidth2 = 23;
+const brickHeight2 = 23;
+const brickWidth3 = 18;
+const brickHeight3 = 18;
 //slike/lego.png
 
 function moveImageAlongPath() {
@@ -582,6 +594,7 @@ function moveImageAlongPath() {
       ctx2.drawImage(image, x, y, imgWidth, imgHeight);
 
 
+
       setTimeout(() => {
         requestAnimationFrame(animate);
       }, 200);
@@ -604,6 +617,14 @@ function drawMaze() {
   ch.width = 484 * scale;
   ch.height = 484 * scale;
   ctx2.scale(scale, scale);
+   brick1.onload = function() {
+        ctx.drawImage(brick1,44,118, brickWidth1, brickHeight1);
+		ctx.drawImage(brick1,36,391, brickWidth1, brickHeight1);
+		ctx.drawImage(brick2,100,462, brickWidth2, brickHeight2);
+		ctx.drawImage(brick2,195,0, brickWidth2, brickHeight2);
+		ctx.drawImage(brick3,150,145, brickWidth3, brickHeight3);
+		ctx.drawImage(brick3,80,257, brickWidth3, brickHeight3);
+    };
   for (i = 0; i < cord.length; i++) {
     console.log("maze2");
     ctx.moveTo(cord[i][0], cord[i][1]);
