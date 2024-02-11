@@ -534,6 +534,9 @@ var path = [
   [250, 474],
   [250, 482]
 ];
+audio = new Audio('aud/chomp.wav');
+audio.volume=0.15;
+
 
 const brick1 = new Image();
 brick1.src = "slike/brick1.png";
@@ -572,6 +575,8 @@ function moveImageAlongPath() {
   var pstepy = 0;//0
   var dstepx = 0;//0
   var dstepy = 0;//0
+  var x=0;
+  var y=0;
   function animate() {
     if (currentStep < path.length - 1) {
       dstepx = Math.min(Math.abs(dstepx)+1, Math.abs(stepx))*Math.sign(stepx); /* premika v levo in desno*/
@@ -587,13 +592,16 @@ function moveImageAlongPath() {
 
         stepx = path[currentStep][0] / 16 - pstepx; /* shraniu točko, do katere bo interpoliralo */
         stepy = path[currentStep][1] / 16 - pstepy;
-      }
-      const x = (dstepx+pstepx)*16 - imgWidth / 2; /* zračune na katerih koordinatah bo narisalo sliko */
-      const y = (dstepy+pstepy)*16 - imgHeight / 2;
-      ctx2.clearRect(0, 0, ctx2.canvas.width, ctx2.canvas.height);
+      } 
+      ctx2.clearRect(x, y, imgWidth, imgHeight);
+      audio.play();
+      x = (dstepx+pstepx)*16 - imgWidth / 2; /* zračune na katerih koordinatah bo narisalo sliko */
+      y = (dstepy+pstepy)*16 - imgHeight / 2;
+      /*  ctx2.clearRect(0, 0, ctx2.canvas.width, ctx2.canvas.height);*/
       ctx2.drawImage(image, x, y, imgWidth, imgHeight);
+     
 
-
+      console.log(x+" "+y);
 
       setTimeout(() => {
         requestAnimationFrame(animate);
@@ -603,8 +611,6 @@ function moveImageAlongPath() {
 
   animate();
 }
-
-moveImageAlongPath();
 
 function drawMaze() {
 
@@ -618,12 +624,14 @@ function drawMaze() {
   ch.height = 484 * scale;
   ctx2.scale(scale, scale);
    brick1.onload = function() {
-        ctx.drawImage(brick1,44,118, brickWidth1, brickHeight1);
-		ctx.drawImage(brick1,36,391, brickWidth1, brickHeight1);
-		ctx.drawImage(brick2,100,462, brickWidth2, brickHeight2);
-		ctx.drawImage(brick2,195,0, brickWidth2, brickHeight2);
-		ctx.drawImage(brick3,150,145, brickWidth3, brickHeight3);
-		ctx.drawImage(brick3,80,257, brickWidth3, brickHeight3);
+    ctx2.drawImage(brick1,50,119, brickWidth1, brickHeight1);
+    ctx2.drawImage(brick1,164,87, brickWidth1, brickHeight1);
+		ctx2.drawImage(brick1,37,391, brickWidth1, brickHeight1);
+		ctx2.drawImage(brick2,100,462, brickWidth2, brickHeight2);
+		ctx2.drawImage(brick2,195,0, brickWidth2, brickHeight2);
+		ctx2.drawImage(brick3,150,145, brickWidth3, brickHeight3);
+		ctx2.drawImage(brick3,260,449, brickWidth3, brickHeight3);
+    ctx2.drawImage(brick3,80,257, brickWidth3, brickHeight3);
     };
   for (i = 0; i < cord.length; i++) {
     console.log("maze2");
