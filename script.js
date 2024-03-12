@@ -559,6 +559,8 @@ const brickHeight3 = 18;
 
 function moveImageAlongPath() {
 
+  document.getElementById("play").setAttribute("disabled",true);
+  
   const image = new Image();
   image.src = "slike/lego.png"; // Replace with the path to your image
 
