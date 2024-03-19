@@ -16,6 +16,7 @@ body{
 #oblak{
 	position: relative;
 	z-index: 1;
+	opacity: 0.8;
 }
 
 #napis{
@@ -51,9 +52,13 @@ body{
 }
 
 button{
-    height: 50px;
-    width: 120px;
+    height: 78px;
+    width: 150px;
     margin: auto;
-	font-weight: bold;
+	color: white;
+	background-image: url("slike/gumb1.png");
+	opacity: 0.9;
+	border: 3px solid #880808;
+	font-size: 40px;
 }
 
