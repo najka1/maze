@@ -534,7 +534,7 @@ var path = [
   [250, 474],
   [250, 482]
 ];
-audio = new Audio('aud/chomp.wav');
+audio = new Audio('lego-walking.mp3');
 audio.volume=0.15;
 
 
